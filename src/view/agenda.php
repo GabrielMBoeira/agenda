@@ -10,35 +10,81 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Agenda</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Cadastrar compromissos</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="jumbotron jumbotron-fluid bg-primary m-0">
-            <div class="container">
-                <h1 class="d-flex justify-content-center align-items-center m-0 text-white">Compromissos</h1>
-            </div>
+    <header class="header">
+        <div class="col-md-12 p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="navbar-toggler-icon"></span>
+                </button> <a class="navbar-brand" href="#">Agenda</a>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Compromissos <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
-    <main>
-        MAIN
-    </main>
-    <footer>
-        <div class="footer bg-dark text-white">
-            Agenda Gabriel e Ana
+
+    <main class="main">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Card title
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Card content
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            Card footer
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Card title
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Card content
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            Card footer
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Card title
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Card content
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            Card footer
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
+
+    <footer class="footer d-flex justify-content-end bg-dark text-white">
+        Agenda Gabriel & Ana
     </footer>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
