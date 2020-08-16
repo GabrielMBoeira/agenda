@@ -1,5 +1,5 @@
 <?php
-$url = (isset($_GET['url']) ? $_GET['url'] : 'src/view/404.php');
+$url = (isset($_GET['url']) ? $_GET['url'] : 'agenda');
 $url = array_filter(explode('/', $url)); 
 
 $file_url = $url[0].'.php';
