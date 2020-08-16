@@ -1,5 +1,5 @@
 <?php
-$url = (isset($_GET['url']) ? $_GET['url'] : '');
+$url = (isset($_GET['url']) ? $_GET['url'] : 'src/view/404.php');
 $url = array_filter(explode('/', $url)); 
 
 $file_url = $url[0].'.php';
@@ -10,6 +10,7 @@ if (is_file($file_path)) {
 } else {
     require_once('src/view/404.php');
 }
+
 ?>
 
 
