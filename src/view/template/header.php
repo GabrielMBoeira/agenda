@@ -17,11 +17,11 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="navbar-toggler-icon"></span>
-                </button> <a class="navbar-brand" href="agenda.php">Agenda</a>
+                </button> <a class="navbar-brand" href="agenda">Agenda</a>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="register_agenda.php">Cadastrar compromissos</a>
+                            <a class="nav-link" href="register_agenda">Cadastrar compromissos</a>
                         </li>
                     </ul>
                 </div>
