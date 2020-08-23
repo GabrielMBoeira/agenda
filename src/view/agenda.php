@@ -1,5 +1,9 @@
 <?php
-require_once('template/header.php')
+require_once('template/header.php');
+require_once(dirname(__FILE__, 2) . '/db/Connection.php');
+
+$conn = Connection::connectionDB();
+
 ?>
 
 <main class="main p-4">
