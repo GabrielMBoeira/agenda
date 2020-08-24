@@ -9,8 +9,6 @@ if (isset($_POST['save'])) {
 
     $appointment = htmlspecialchars($_POST['appointment'], ENT_QUOTES);
     
-
-
     $query = "INSERT INTO note (appointment) VALUES ('$appointment')";
 
     $conn = Connection::connectionDB();
@@ -21,9 +19,8 @@ if (isset($_POST['save'])) {
     } else {
         $msg[0] = '<div class="alert alert-danger" role="alert">Manutenção não cadastrada!</div>';
     }
+    pg_close();
 }
-
-
 
 ?>
 
@@ -32,7 +29,7 @@ if (isset($_POST['save'])) {
         <?= $msg[0]; ?>
         <form action="#" method="POST">
             <div class="form-row mt-3">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="appointment">
                         Compromisso
                     </label>
@@ -43,7 +40,7 @@ if (isset($_POST['save'])) {
                         Date
                     </label>
                     <input type="date" class="form-control" id="date" name="date" />
-                    <div class="d-flex justify-content-start">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary mt-3" name="save">
                             Salvar
                         </button>
