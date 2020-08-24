@@ -2,6 +2,8 @@
 require_once('template/header.php');
 require_once(dirname(__FILE__, 2) . '/db/Connection.php');
 
+//Iniciando array vazio para inicialização da página
+$msg[0] = '';
 
 if (isset($_POST['save'])) {
 
