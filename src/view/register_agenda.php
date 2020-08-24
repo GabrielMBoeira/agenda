@@ -5,7 +5,8 @@ require_once(dirname(__FILE__, 2) . '/db/Connection.php');
 
 if (isset($_POST['save'])) {
 
-    $appointment = $_POST['appointment'];
+    $appointment = htmlspecialchars($_POST['appointment'], ENT_QUOTES);
+    
 
 
     $query = "INSERT INTO note (appointment) VALUES ('$appointment')";
@@ -39,7 +40,7 @@ if (isset($_POST['save'])) {
                     <label for="date">
                         Date
                     </label>
-                    <input type="date" class="form-control" id="date" />
+                    <input type="date" class="form-control" id="date" name="date" />
                     <div class="d-flex justify-content-start">
                         <button type="submit" class="btn btn-primary mt-3" name="save">
                             Salvar
