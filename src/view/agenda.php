@@ -25,8 +25,10 @@ $conn = Connection::connectionDB();
 <main class="main p-4">
     <table>
         <thead>
-            <th>ID</th>
-            <th>NOTE</th>
+            <tr>
+                <th>ID</th>
+                <th>NOTE</th>
+            </tr>
         </thead>
         <tbody>
             <?php foreach ($registros as $registro):?>
@@ -45,7 +47,8 @@ $conn = Connection::connectionDB();
                     <h5 class="card-header">
                         Compromisso
                         <div class="user-date">
-                            Usuário: Gabriel - Data limite: 12/01/2021 - 16:00:00
+                            Usuário: Gabriel - 
+                            <span class="date-appointment">Data: 12/01/2021</span> 
                         </div>
                     </h5>
                     <div class="card-body">
