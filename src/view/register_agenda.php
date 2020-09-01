@@ -11,6 +11,7 @@ if (isset($_POST['save'])) {
     $appointment = htmlspecialchars($_POST['appointment'], ENT_QUOTES);
     $login = htmlspecialchars($_POST['login'], ENT_QUOTES);
     $appointment_date = htmlspecialchars($_POST['appointment_date'], ENT_QUOTES);
+    $status = htmlspecialchars($_POST['status'], ENT_QUOTES);
 
     if (trim($appointment) === '') {
         $erros['appointment'] = 'Compromisso é obrigatório';
@@ -25,7 +26,7 @@ if (isset($_POST['save'])) {
     }
 
     if (!$erros) {
-        $query = "INSERT INTO note (appointment, login, appointment_date) VALUES ('$appointment', '$login', '$appointment_date')";
+        $query = "INSERT INTO note (appointment, login, appointment_date, status) VALUES ('$appointment', '$login', '$appointment_date', '$status')";
 
         $conn = Connection::connectionDB();
 
@@ -45,6 +46,7 @@ if (isset($_POST['save'])) {
     <div class="container">
         <?= $msg[0]; ?>
         <form action="#" method="POST">
+            <input type="hidden" name="status" value="active">
             <div class="form-row mt-3">
                 <div class="form-group col-md-6">
                     <label for="appointment">
