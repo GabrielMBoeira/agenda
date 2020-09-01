@@ -2,3 +2,12 @@ main.main .user-date {
     margin-top: 7px;
     font-size: 0.9rem;
 }
+
+.user-text {
+    font-size: 0.8rem;
+}
+
+.date-appointment {
+    font-weight: bold;
+    color: #c51101;
+}
