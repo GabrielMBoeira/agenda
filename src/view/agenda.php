@@ -13,12 +13,14 @@ $conn = Connection::connectionDB();
     }
 
     if (pg_num_rows($resultado) == 0) {
-        echo "pg 0 records";
+        header('Location: data_base_empty');
     } else {
         while ($row = pg_fetch_assoc($resultado)) {
                 $registros[] = $row;
          }
     }
+
+    pg_close();
 
 ?>
 
@@ -48,7 +50,7 @@ $conn = Connection::connectionDB();
                     </div>
                     <div class="card-footer d-flex justify-content-center">
                         <button class="btn btn-danger btn-sm m-1">Deletar</button>
-                        <button class="btn btn-success btn-sm m-1">Alterar</button>
+                        <a class="btn btn-success btn-sm m-1" href="edit_agenda?id=<?= $registro['id'] ?>">Alterar</a>
                         <button class="btn btn-primary btn-sm m-1">Concluído</button>
                     </div>
                 </div>
