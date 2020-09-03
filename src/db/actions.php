@@ -2,9 +2,9 @@
 
 require_once(dirname(__FILE__, 2) . '/db/Connection.php');
 
+session_start();
+
 //INSERINDO REGISTRO - (register_agenda.php)
-$msg[0] = '';
-$erros = [];
 
 if (isset($_POST['save'])) {
 
@@ -14,34 +14,34 @@ if (isset($_POST['save'])) {
     $status = htmlspecialchars($_POST['status'], ENT_QUOTES);
 
     if (trim($appointment) === '') {
-        $erros['appointment'] = 'Compromisso é obrigatório';
-    }
-
-    if (trim($login) === 'Selecione') {
-        $erros['login'] = 'Favor adicionar responsável';
+        $_SESSION['empty_appointment'] = 'Compromisso é obrigatório';
+        header('Location: ../../register_agenda');
     }
 
     if (trim($appointment_date) === '') {
-        $erros['appointment_date'] = 'Favor adicionar data do compromisso';
-    }
-
-    if (!$erros) {
-        
-        $conn = Connection::connectionDB();
-        $query = "INSERT INTO note (appointment, login, appointment_date, status) VALUES ('$appointment', '$login', '$appointment_date', '$status')";
-        
-        if (pg_query($query)) {
-            $msg[0] = '<div class="alert alert-success" role="alert">Cadastrado com sucesso!</div>';
-            unset($_POST);
-        } else {
-            $msg[0] = '<div class="alert alert-danger" role="alert"> não cadastrada!</div>';
-        }
-        pg_close();
-
-        header('Location: ../../agenda');
-    } else {
+        $_SESSION['empty_appointment_date'] = 'Favor adicionar data do compromisso';
         header('Location: ../../register_agenda');
     }
-}
 
-?>
+    if (trim($login) === 'Selecione') {
+        $_SESSION['empty_login'] = 'Favor adicionar responsável';
+        header('Location: ../../register_agenda');
+    }
+
+    if ($appointment & $appointment_date & $login) {
+
+        $conn = Connection::connectionDB();
+        $query = "INSERT INTO note (appointment, login, appointment_date, status) VALUES ('$appointment', '$login', '$appointment_date', '$status')";
+
+        if (pg_query($query)) {
+            $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Cadastrado com sucesso!</div>';
+        } 
+
+    } else {
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Não cadastrado!</div>';
+    }
+
+    pg_close();
+
+    header('Location: ../../register_agenda');
+}
