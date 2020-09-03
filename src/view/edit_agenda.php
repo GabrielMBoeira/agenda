@@ -82,7 +82,6 @@ if (isset($_POST['save'])) {
 <main class="main p-4">
     <div class="container">
         <form action="#" method="POST">
-            <?= print_r($registro) ?>
             <input type="hidden" name="status" value="active">
             <input type="hidden" name="id" value="<?php $registro['id'] ?>">
             <div class="form-row mt-3">
