@@ -5,7 +5,6 @@ require_once(dirname(__FILE__, 2) . '/db/Connection.php');
 session_start();
 
 //INSERINDO REGISTRO - (register_agenda.php)
-
 if (isset($_POST['save'])) {
 
     $appointment = htmlspecialchars($_POST['appointment'], ENT_QUOTES);
@@ -36,9 +35,8 @@ if (isset($_POST['save'])) {
         if (pg_query($query)) {
             $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Cadastrado com sucesso!</div>';
         } else {
-            $_SESSION['msg'] = "Erro de inserção"; 
+            $_SESSION['msg'] = "Erro de inserção";
         }
-
     } else {
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Não cadastrado!</div>';
     }
@@ -49,7 +47,6 @@ if (isset($_POST['save'])) {
 }
 
 //ATUALIZANDO REGISTRO - (edit_agenda.php)
-
 if (isset($_POST['update'])) {
 
 
@@ -83,11 +80,30 @@ if (isset($_POST['update'])) {
         if (pg_query($query)) {
             $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Atualizado com sucesso!</div>';
         } else {
-            $_SESSION['msg'] = "Erro de inserção"; 
+            $_SESSION['msg'] = "Erro de inserção";
         }
-
     } else {
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Não Atualizado!</div>';
+    }
+
+    pg_close();
+
+    header('Location: ../../register_agenda');
+}
+
+//DELETANDO REGISTRO - (agenda.php)
+if (isset($_POST['delete'])) {
+
+    $id = htmlspecialchars($_POST['id'], ENT_QUOTES);
+
+
+    $conn = Connection::connectionDB();
+    $query = "DELETE FROM note WHERE id = '$id'";
+
+    if (pg_query($query)) {
+        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Deletado com sucesso!</div>';
+    } else {
+        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao deletar!</div>';
     }
 
     pg_close();

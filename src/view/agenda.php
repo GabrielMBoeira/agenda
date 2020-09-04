@@ -49,7 +49,7 @@ $conn = Connection::connectionDB();
                         </p>
                     </div>
                     <div class="card-footer d-flex justify-content-center">
-                        <button class="btn btn-danger btn-sm m-1">Deletar</button>
+                        <button class="btn btn-danger btn-sm m-1" name="delete" >Deletar</button>
                         <a class="btn btn-success btn-sm m-1" href="edit_agenda?id=<?= $registro['id'] ?>">Alterar</a>
                         <button class="btn btn-primary btn-sm m-1">Concluído</button>
                     </div>

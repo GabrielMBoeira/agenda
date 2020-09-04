@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
     <div class="container">
         <form action="src/db/actions.php" method="POST">
             <input type="hidden" name="status" value="active">
-            <input type="hidden" name="id" value="<?php $registro['id'] ?>">
+            <input type="hidden" name="id" value="<?= $registro['id'] ?>">
             <div class="form-row mt-3">
                 <div class="form-group col-md-6">
                     <label for="appointment">
@@ -51,8 +51,11 @@ if (isset($_GET['id'])) {
                     <label for="login">
                         <strong>Responsável</strong>
                     </label>
-                    <input type="text" class="form-control" value="<?= $registro['login'] ?>" name="login" readonly >
-                    <div class="invalid-feedback"><?= $erros['login'] ?></div>
+                    <select name="login" id="login" class="form-control <?= $_SESSION['empty_login'] ? 'is-invalid' : '' ?>">
+                        <option value="">Selecione</option>
+                        <option value="Gabriel">Gabriel</option>
+                        <option value="Ana Clara">Ana Clara</option>
+                    </select>
                 </div>
                 <div class="d-flex justify-content-end col-12">
                     <button type="submit" class="btn btn-primary mt-3" name="update">
