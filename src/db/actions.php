@@ -23,7 +23,7 @@ if (isset($_POST['save'])) {
         header('Location: ../../register_agenda');
     }
 
-    if (trim($login) === 'Selecione') {
+    if (trim($login) === '') {
         $_SESSION['empty_login'] = 'Favor adicionar responsável';
         header('Location: ../../register_agenda');
     }
@@ -35,10 +35,59 @@ if (isset($_POST['save'])) {
 
         if (pg_query($query)) {
             $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Cadastrado com sucesso!</div>';
-        } 
+        } else {
+            $_SESSION['msg'] = "Erro de inserção"; 
+        }
 
     } else {
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Não cadastrado!</div>';
+    }
+
+    pg_close();
+
+    header('Location: ../../register_agenda');
+}
+
+//ATUALIZANDO REGISTRO - (edit_agenda.php)
+
+if (isset($_POST['update'])) {
+
+
+    $id = htmlspecialchars($_POST['id'], ENT_QUOTES);
+    $appointment = htmlspecialchars($_POST['appointment'], ENT_QUOTES);
+    $login = htmlspecialchars($_POST['login'], ENT_QUOTES);
+    $appointment_date = htmlspecialchars($_POST['appointment_date'], ENT_QUOTES);
+    $status = htmlspecialchars($_POST['status'], ENT_QUOTES);
+
+    if (trim($appointment) === '') {
+        $_SESSION['empty_appointment'] = 'Compromisso é obrigatório';
+        header('Location: ../../register_agenda');
+    }
+
+    if (trim($appointment_date) === '') {
+        $_SESSION['empty_appointment_date'] = 'Favor adicionar data do compromisso';
+        header('Location: ../../register_agenda');
+    }
+
+    if (trim($login) === '') {
+        $_SESSION['empty_login'] = 'Favor adicionar responsável';
+        header('Location: ../../register_agenda');
+    }
+
+    if ($appointment & $appointment_date & $login) {
+
+        $conn = Connection::connectionDB();
+        $query = "UPDATE note SET appointment = '$appointment', login = '$login', appointment_date = '$appointment_date',
+         status = '$status' WHERE id = '$id'";
+
+        if (pg_query($query)) {
+            $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Atualizado com sucesso!</div>';
+        } else {
+            $_SESSION['msg'] = "Erro de inserção"; 
+        }
+
+    } else {
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Não Atualizado!</div>';
     }
 
     pg_close();

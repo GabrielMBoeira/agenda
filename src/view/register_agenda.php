@@ -8,10 +8,10 @@ session_start();
 <main class="main p-4">
     <div class="container">
         <?php
-            if (isset($_SESSION['msg'])) {
-                print_r($_SESSION['msg']);
-                unset($_SESSION['msg']);
-            } 
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+        }
+        unset($_SESSION['msg']);
         ?>
         <form action="src/db/actions.php" method="POST">
             <input type="hidden" name="status" value="active">
@@ -43,7 +43,7 @@ session_start();
                         <strong>Responsável</strong>
                     </label>
                     <select name="login" id="login" class="form-control <?= $_SESSION['empty_login'] ? 'is-invalid' : '' ?>">
-                        <option value="Selecione">Selecione</option>
+                        <option value="">Selecione</option>
                         <option value="Gabriel">Gabriel</option>
                         <option value="Ana Clara">Ana Clara</option>
                     </select>
