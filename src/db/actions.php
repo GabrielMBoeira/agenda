@@ -46,7 +46,7 @@ if (isset($_POST['save'])) {
     header('Location: ../../register_agenda');
 }
 
-//ATUALIZANDO REGISTRO - (edit_agenda.php)
+//EDITANDO REGISTRO - (edit_agenda.php)
 if (isset($_POST['update'])) {
 
 
@@ -108,5 +108,23 @@ if (isset($_POST['delete'])) {
 
     pg_close();
 
-    header('Location: ../../register_agenda');
+    header('Location: ../../agenda');
+}
+
+if (isset($_POST['concluded'])) {
+
+    $id = htmlspecialchars($_POST['id'], ENT_QUOTES);
+
+    Connection::connectionDB();
+    $query = "UPDATE note SET status = 'inactive' WHERE id = '$id'";
+
+    if (pg_query($query)) {
+        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Agenda concluida</div>';
+    } else {
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Erro ao concluir agenda!</div>';
+    }
+
+    pg_close();
+    header('Location: ../../agenda');
+
 }
