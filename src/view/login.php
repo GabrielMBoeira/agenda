@@ -20,7 +20,7 @@ session_start();
       <div class="title-box">
         <label>Agenda</label>
       </div>
-      <?php
+      <?php 
       if (isset($_SESSION['valid-login'])) {
         print_r($_SESSION['valid-login']);
         unset($_SESSION['valid-login']);
