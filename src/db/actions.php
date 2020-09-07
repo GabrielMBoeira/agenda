@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__, 2) . '/db/Connection.php');
+require_once(dirname(__FILE__, 2) . '/validation/valid_login.php');
 
 session_start();
 
@@ -26,6 +27,9 @@ if (isset($_POST['save'])) {
         $_SESSION['empty_login'] = 'Favor adicionar responsável';
         header('Location: ../../register_agenda');
     }
+
+    // //Validando scapestring
+    // $appointment = pg_escape_string();
 
     if ($appointment & $appointment_date & $login) {
 
@@ -103,7 +107,7 @@ if (isset($_POST['delete'])) {
     if (pg_query($query)) {
         $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Deletado com sucesso!</div>';
     } else {
-        $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao deletar!</div>';
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert">Erro ao deletar!</div>';
     }
 
     pg_close();
@@ -126,5 +130,20 @@ if (isset($_POST['concluded'])) {
 
     pg_close();
     header('Location: ../../agenda');
+
+}
+
+//VALIDANDO LOGIN
+if (isset($_POST['send-login'])) {
+
+   $email = $_POST['email'];
+   $senha = $_POST['password'];
+
+    if (validLogin($email, $senha)) {
+        header('Location: ../../agenda');
+    } else {
+        $_SESSION['valid-login'] = '<div class="text-light bg-danger d-flex justify-content-center">Login ou senha inválida!</div>';
+        header('Location: ../../login');
+    }
 
 }
