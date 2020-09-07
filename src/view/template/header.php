@@ -23,7 +23,11 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="register_agenda">Cadastrar compromissos</a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="logout">Sair</a>
+                        </li>
                     </ul>
+                    
                 </div>
             </nav>
         </div>

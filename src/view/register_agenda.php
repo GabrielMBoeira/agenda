@@ -2,6 +2,7 @@
 require_once('template/header.php');
 
 session_start();
+require_once('src/validation/valid_session_login.php');
 
 ?>
 

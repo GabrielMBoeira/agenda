@@ -3,6 +3,7 @@ require_once('template/header.php');
 require_once(dirname(__FILE__, 2) . '/db/Connection.php');
 
 session_start();
+require_once('src/validation/valid_session_login.php');
 
 $conn = Connection::connectionDB();
 

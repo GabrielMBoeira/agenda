@@ -1,5 +1,8 @@
 <?php
 require_once('template/header.php');
+
+session_start();
+require_once('src/validation/valid_session_login.php');
 ?>
 
 <main class="main p-4 d-flex justify-content-center align-items-center">

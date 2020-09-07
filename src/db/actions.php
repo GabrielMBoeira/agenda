@@ -1,7 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__, 2) . '/db/Connection.php');
-require_once(dirname(__FILE__, 2) . '/validation/valid_login.php');
+require_once(dirname(__FILE__, 2) . '/db/valid_login.php');
 
 session_start();
 
@@ -140,6 +140,7 @@ if (isset($_POST['send-login'])) {
    $senha = $_POST['password'];
 
     if (validLogin($email, $senha)) {
+        $_SESSION['valid-login'] = $email;
         header('Location: ../../agenda');
     } else {
         $_SESSION['valid-login'] = '<div class="text-light bg-danger d-flex justify-content-center">Login ou senha inválida!</div>';
