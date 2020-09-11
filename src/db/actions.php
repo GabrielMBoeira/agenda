@@ -115,6 +115,7 @@ if (isset($_POST['delete'])) {
     header('Location: ../../agenda');
 }
 
+//ALTERANDO STATUS PARA INATIVO
 if (isset($_POST['concluded'])) {
 
     $id = htmlspecialchars($_POST['id'], ENT_QUOTES);
